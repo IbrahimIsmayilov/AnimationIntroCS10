@@ -11,22 +11,20 @@ let rectX = 100;
 let rectSize = 80;
 let rectBlue = 255;
 let rectRed = 0;
-let frameCount = 0;
+let mouseIsPressed = false;
 
 // Main Program Loop (60 FPS)
 requestAnimationFrame(loop);
 
 function loop() {
     // Update Variables
-    frameCount++; // update frame count
-    console.log(frameCount);
 
-    if (frameCount > 180) {
+    if (mouseIsPressed) {
         rectX += 1;
         rectBlue--;
+        rectSize += Math.random() * 2 - 1; // -1 to 1
         rectRed++;
     }
-    rectSize += Math.random() * 2 - 1; // -1 to 1
 
 
     // Draw a background
@@ -39,3 +37,6 @@ function loop() {
 
     requestAnimationFrame(loop);
 }
+
+// Event Stuff
+document.addEventListener("mousedown", mouseDownHandler)
