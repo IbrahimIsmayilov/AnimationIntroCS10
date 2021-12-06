@@ -11,7 +11,7 @@ let rectX = 100;
 let rectSize = 80;
 let rectBlue = 255;
 let rectRed = 0;
-let mouseIsPressed = false;
+let animate = false;
 
 // Main Program Loop (60 FPS)
 requestAnimationFrame(loop);
@@ -19,7 +19,7 @@ requestAnimationFrame(loop);
 function loop() {
     // Update Variables
 
-    if (mouseIsPressed) {
+    if (animate) {
         rectX += 1;
         rectBlue--;
         rectSize += Math.random() * 2 - 1; // -1 to 1
@@ -39,4 +39,10 @@ function loop() {
 }
 
 // Event Stuff
-document.addEventListener("mousedown", mouseDownHandler)
+document.addEventListener("keydown", keyDownHandler);
+
+function keyDownHandler() {
+    console.log(event.code);
+
+    animate = !animate;
+}
